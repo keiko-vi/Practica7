@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Trabajador</title>
+</head>
+<body style="font-family: Arial; background-color: #FFF8F0; text-align: center;">
+
+  <h1>Registro</h1>
+
+  <script>
+    // datos al usuario
+    let curp = prompt("Ingrese su CURP:");
+    let nombre = prompt("Ingrese su nombre:");
+    let sueldo = parseFloat(prompt("Ingrese su sueldo diario:"));
+    let dias = parseInt(prompt("Ingrese sus días trabajados:"));
+
+    // calculo de subtotal
+    let subtotal = sueldo * dias;
+
+    // calculo de bono si trabajo más de 8 días
+    let bono = 0;
+    if (dias > 8) {
+      bono = subtotal * 0.30;
+    }
+
+    // calculo de total
+    let total = subtotal + bono;
+
+    // para mostrar imagenes
+    let imagenHTML = "";
+    if (curp === "1") {
+      imagenHTML = "<img src='1.jpg' alt='Foto trabajador' width='80' style='border-radius:10px;'>";
+    } 
+    else if (curp === "2") {
+      imagenHTML = "<img src='2.jpg' alt='Foto trabajador' width='80' style='border-radius:10px;'>";
+    }
+    else if (curp === "3") {
+      imagenHTML = "<img src='3.jpg' alt='Foto trabajador' width='80' style='border-radius:10px;'>";
+    } else {
+      imagenHTML = "<i>Sin imagen</i>";
+    }
+
+    // mostrar la tabla
+    document.write("<table border='1' align='center' cellpadding='8' cellspacing='0' style='background-color:#FFFFFF; border-collapse:collapse;'>");
+    document.write("<tr style='background-color:#B5EAD7; color:white;'>");
+    document.write("<th>#</th><th>CURP</th><th>FOTO</th><th>NOMBRE</th><th>SUELDO DIARIO</th><th>DÍAS TRABAJADOS</th><th>SUB TOTAL</th><th>BONO 30%</th><th>TOTAL</th>");
+    document.write("</tr>");
+
+    document.write("<tr>");
+    document.write("<td>1</td>");
+    document.write("<td>" + curp + "</td>");
+    document.write("<td>" + imagenHTML + "</td>");
+    document.write("<td>" + nombre + "</td>");
+    document.write("<td>$" + sueldo.toFixed(2) + "</td>");
+    document.write("<td>" + dias + "</td>");
+    document.write("<td>$" + subtotal.toFixed(2) + "</td>");
+    document.write("<td>$" + bono.toFixed(2) + "</td>");
+    document.write("<td><b>$" + total.toFixed(2) + "</b></td>");
+    document.write("</tr>");
+    document.write("</table>");
+  </script>
+
+</body>
+</html>
